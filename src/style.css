@@ -1,7 +1,56 @@
-.hello {
-  color: red;
+* {
+  list-style: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-body {
-  background-color: bisque;
+#ToDoList {
+  display: flex;
+  flex-direction: column;
+  margin: 35vh;
+  width: 60%;
+  box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.demo {
+  color: #545862;
+  font-size: 15px;
+  font-weight: 400;
+  padding: 1rem;
+  line-height: 20px;
+}
+
+#addItem {
+  border: none;
+  font-style: italic;
+  width: 99%;
+  height: 3rem;
+  text-indent: 10px;
+}
+
+#addItem[type="text"]:focus {
+  outline: none;
+}
+
+#addItem[type="text"]::placeholder {
+  text-indent: 10px;
+}
+
+#todo-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  height: 3rem;
+}
+
+#clearButton {
+  width: 100%;
+  height: 3rem;
+  border: none;
 }

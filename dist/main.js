@@ -17526,7 +17526,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".hello {\r\n  color: red;\r\n}\r\n\r\nbody {\r\n  background-color: bisque;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  list-style: none;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.08);\r\n}\r\n\r\n#ToDoList {\r\n  display: flex;\r\n  flex-direction: column;\r\n  margin: 35vh;\r\n  width: 60%;\r\n  box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -webkit-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -moz-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n}\r\n\r\n.demo {\r\n  color: #545862;\r\n  font-size: 15px;\r\n  font-weight: 400;\r\n  padding: 1rem;\r\n  line-height: 20px;\r\n}\r\n\r\n#addItem {\r\n  border: none;\r\n  font-style: italic;\r\n  width: 99%;\r\n  height: 3rem;\r\n}\r\n\r\n#todo-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 0;\r\n}\r\n\r\n.listItem {\r\n  display: flex;\r\n  align-items: center;\r\n  height: 3rem;\r\n}\r\n\r\n#clearButton {\r\n  width: 100%;\r\n  height: 3rem;\r\n  border: none;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17739,20 +17739,56 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+// eslint-disable-next-line no-unused-vars
 
 
 
-function component() {
-  const element = document.createElement('div');
+const tasks = [
+  {
+    description: 'Buy groceries',
+    completed: false,
+    index: 0,
+  },
+  {
+    description: 'Clean the house',
+    completed: true,
+    index: 1,
+  },
+  {
+    description: 'Take the dog for a walk',
+    completed: false,
+    index: 2,
+  },
+];
 
-  // Lodash, now imported by this script
-  element.innerHTML = lodash__WEBPACK_IMPORTED_MODULE_0___default().join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
-
-  return element;
+function createTaskItem(task) {
+  const taskItem = document.createElement('li');
+  taskItem.classList.add('listItem');
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.checked = task.completed;
+  taskItem.appendChild(checkbox);
+  taskItem.innerHTML += task.description;
+  if (task.completed) {
+    taskItem.classList.add('completed');
+  }
+  return taskItem;
 }
 
-document.body.appendChild(component());
+function populateTodoList() {
+  const todoList = document.getElementById('todo-list');
+
+  // Sort tasks by index value
+  tasks.sort((a, b) => a.index - b.index);
+
+  tasks.forEach((task) => {
+    const taskItem = createTaskItem(task);
+    todoList.appendChild(taskItem);
+  });
+}
+
+// Call the populateTodoList function when the page finishes loading
+window.addEventListener('load', populateTodoList);
 })();
 
 /******/ })()

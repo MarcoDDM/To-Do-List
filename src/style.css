@@ -49,6 +49,14 @@
   height: 3rem;
 }
 
+.inputList {
+  border: none;
+}
+
+.inputList[type="text"]:focus {
+  outline: none;
+}
+
 #clearButton {
   width: 100%;
   height: 3rem;

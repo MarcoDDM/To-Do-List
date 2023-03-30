@@ -3,110 +3,69 @@ import './style.css';
 
 _();
 
-let tasks = [
+// Define the tasks array
+const tasks = [
   {
-    description: 'Buy groceries',
+    description: 'Walk the dog',
     completed: false,
     index: 0,
   },
   {
-    description: 'Clean the house',
-    completed: true,
+    description: 'Buy groceries',
+    completed: false,
     index: 1,
   },
   {
-    description: 'Take the dog for a walk',
+    description: 'Clean the house',
     completed: false,
     index: 2,
   },
+  {
+    description: 'Do laundry',
+    completed: false,
+    index: 3,
+  },
 ];
 
-function createTaskItem(task) {
-  const taskItem = document.createElement('li');
-  taskItem.classList.add('listItem');
-  const checkbox = document.createElement('input');
-  checkbox.type = 'checkbox';
-  checkbox.checked = task.completed;
-  taskItem.appendChild(checkbox);
-
-  // Create input element
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.value = task.description;
-  input.classList.add('inputList');
-  taskItem.appendChild(input);
-
-  if (task.completed) {
-    taskItem.classList.add('completed');
-  }
-
-  // Add event listener to input element
-  input.addEventListener('blur', (event) => {
-    const newDescription = event.target.value.trim();
-    if (newDescription) {
-      task.description = newDescription;
-
-      // Store tasks in local storage
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-    } else {
-      // If the input is empty, restore the original description
-      event.target.value = task.description;
-    }
-  });
-
-  return taskItem;
-}
-
-function populateTodoList() {
-  const todoList = document.getElementById('todo-list');
-
-  // Retrieve tasks from local storage
-  const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-  if (storedTasks) {
-    tasks = storedTasks;
-  }
-
-  // Sort tasks by index value
-  tasks.sort((a, b) => a.index - b.index);
+// Define the populateTaskList function
+function populateTaskList() {
+  const taskList = document.getElementById('todo-list');
 
   tasks.forEach((task) => {
-    const taskItem = createTaskItem(task);
-    todoList.appendChild(taskItem);
+    const listItem = document.createElement('li');
+    listItem.classList.add('listItem');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = task.completed;
+    checkbox.addEventListener('click', () => {
+      task.completed = checkbox.checked;
+      if (task.completed) {
+        listItem.classList.add('completed');
+      } else {
+        listItem.classList.remove('completed');
+      }
+    });
+    listItem.appendChild(checkbox);
+
+    const descriptionSpan = document.createElement('span');
+    descriptionSpan.innerText = task.description;
+    listItem.appendChild(descriptionSpan);
+
+    if (task.completed) {
+      listItem.classList.add('completed');
+    }
+
+    const trashDiv = document.createElement('div'); // Create a new div element
+    trashDiv.classList.add('trashDiv'); // Add a class to the div element
+
+    const trashIcon = document.createElement('span');
+    trashIcon.innerHTML = '<i class="bi bi-trash3"></i>'; // Display the task index on the right side
+    trashDiv.appendChild(trashIcon);
+
+    listItem.appendChild(trashDiv); // Append the new div element to the list item
+
+    taskList.appendChild(listItem);
   });
 }
 
-const addItemInput = document.getElementById('addItem');
-const todoList = document.getElementById('todo-list'); // Define todoList globally
-addItemInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-    const newTask = {
-      index: tasks.length,
-      description: addItemInput.value,
-      completed: false,
-    };
-    tasks.push(newTask);
-    const taskItem = createTaskItem(newTask);
-    todoList.appendChild(taskItem); // Use todoList globally
-
-    // Store tasks in local storage
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-
-    addItemInput.value = '';
-  }
-});
-
-const clearButton = document.getElementById('clearButton');
-clearButton.addEventListener('click', () => {
-  const completedItems = todoList.querySelectorAll('li input:checked');
-  completedItems.forEach((item) => {
-    const listItem = item.parentNode;
-    tasks.splice(listItem.dataset.index, 1);
-    listItem.remove();
-  });
-
-  // Store tasks in local storage
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-});
-
-// Call the populateTodoList function when the page finishes loading
-window.addEventListener('load', populateTodoList);
+window.addEventListener('load', populateTaskList);

@@ -7,24 +7,28 @@
   display: flex;
   flex-direction: column;
   margin: 35vh;
-  width: 60%;
+  width: 50%;
   box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
-.demo {
+#Demo {
   color: #545862;
-  font-size: 15px;
-  font-weight: 400;
-  padding: 1rem;
-  line-height: 20px;
+  border: none;
+  width: 93%;
+  height: 3rem;
+  text-indent: 10px;
+}
+
+#Demo[type="text"]:focus {
+  outline: none;
 }
 
 #addItem {
   border: none;
   font-style: italic;
-  width: 99%;
+  width: 93%;
   height: 3rem;
   text-indent: 10px;
 }

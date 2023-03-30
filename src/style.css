@@ -1,6 +1,8 @@
 * {
   list-style: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 #ToDoList {
@@ -23,6 +25,10 @@
 
 #Demo[type="text"]:focus {
   outline: none;
+}
+
+i {
+  cursor: pointer;
 }
 
 #addItem {
@@ -49,6 +55,7 @@
 
 .listItem {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   height: 3rem;
 }
@@ -61,8 +68,21 @@
   outline: none;
 }
 
+.taskDiv {
+  padding-right: 15rem;
+  width: 50%;
+}
+
+.dotsDiv {
+  padding-right: 1.6rem;
+}
+
 #clearButton {
   width: 100%;
   height: 3rem;
   border: none;
+}
+
+#clearButton:hover {
+  text-decoration: underline;
 }

@@ -41,28 +41,31 @@ function populateTaskList() {
       task.completed = checkbox.checked;
       if (task.completed) {
         listItem.classList.add('completed');
+        taskDiv.style.textDecoration = 'line-through';
       } else {
         listItem.classList.remove('completed');
+        taskDiv.style.textDecoration = 'none';
       }
     });
     listItem.appendChild(checkbox);
 
-    const descriptionSpan = document.createElement('span');
-    descriptionSpan.innerText = task.description;
-    listItem.appendChild(descriptionSpan);
+    const taskDiv = document.createElement('div');
+    taskDiv.classList.add('taskDiv');
+    taskDiv.innerText = task.description;
+    listItem.appendChild(taskDiv);
 
     if (task.completed) {
       listItem.classList.add('completed');
     }
 
-    const trashDiv = document.createElement('div'); // Create a new div element
-    trashDiv.classList.add('trashDiv'); // Add a class to the div element
+    const dotsDiv = document.createElement('div'); // Create a new div element
+    dotsDiv.classList.add('dotsDiv'); // Add a class to the div element
 
-    const trashIcon = document.createElement('span');
-    trashIcon.innerHTML = '<i class="bi bi-trash3"></i>'; // Display the task index on the right side
-    trashDiv.appendChild(trashIcon);
+    const dotsIcon = document.createElement('div');
+    dotsIcon.innerHTML = '<i class="bi bi-three-dots-vertical"></i>'; // Display the task index on the right side
+    dotsDiv.appendChild(dotsIcon);
 
-    listItem.appendChild(trashDiv); // Append the new div element to the list item
+    listItem.appendChild(dotsDiv); // Append the new div element to the list item
 
     taskList.appendChild(listItem);
   });

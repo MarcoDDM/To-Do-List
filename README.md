@@ -146,6 +146,8 @@ You can deploy this project using:
 
 Contributions, issues, and feature requests are welcome!
 
+Feel free to check my issues section in <a href="https://github.com/Danfall369/To-Do-List/issues">Here!</a>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 

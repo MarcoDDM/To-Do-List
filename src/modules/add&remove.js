@@ -1,6 +1,10 @@
-let tasks = [];
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-function removeItem(listItem, index) {
+function saveTask() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+export function removeItem(listItem, index) {
   tasks.splice(index, 1);
   listItem.remove();
 
@@ -8,9 +12,7 @@ function removeItem(listItem, index) {
   for (let i = index; i < tasks.length; i += 1) {
     tasks[i].index = i;
   }
-
-  // save updated tasks to local storage
-  localStorage.setItem('tasks', JSON.stringify(tasks));
+  saveTask();
 }
 
 export function taskList() {
@@ -33,8 +35,7 @@ export function taskList() {
         listItem.classList.remove('completed');
         listItem.style.textDecoration = 'none';
       }
-      // save updated tasks to local storage
-      localStorage.setItem('tasks', JSON.stringify(tasks));
+      saveTask();
     });
     listItem.appendChild(checkbox);
 
@@ -52,8 +53,7 @@ export function taskList() {
         task.description = inputTask.value;
         inputTask.replaceWith(taskDiv);
         taskDiv.innerText = task.description;
-        // save updated tasks to local storage
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        saveTask();
       });
     };
     taskDiv.addEventListener('dblclick', editDescription);
@@ -75,12 +75,6 @@ export function taskList() {
 }
 
 export function addTask() {
-  // retrieve tasks from local storage
-  const storedTasks = localStorage.getItem('tasks');
-  if (storedTasks) {
-    tasks = JSON.parse(storedTasks);
-  }
-
   const input = document.getElementById('addItem');
 
   function addNewTask() {
@@ -89,9 +83,7 @@ export function addTask() {
     tasks.push(newTask);
     taskList();
     input.value = '';
-
-    // save updated tasks to local storage
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    saveTask();
   }
 
   input.addEventListener('keydown', (event) => {
@@ -100,6 +92,4 @@ export function addTask() {
     }
   });
   document.getElementById('Plus').addEventListener('click', addNewTask);
-
-  taskList();
 }

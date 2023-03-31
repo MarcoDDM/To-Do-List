@@ -1,10 +1,4 @@
-const tasks = JSON.parse(localStorage.getItem('tasks')) || [
-  {
-    description: 'Walk the dog',
-    completed: false,
-    index: 0,
-  },
-];
+const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 function saveTasksToLocalStorage() {
   localStorage.setItem('tasks', JSON.stringify(tasks));

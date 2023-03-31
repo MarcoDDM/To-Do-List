@@ -17526,7 +17526,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  list-style: none;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.08);\r\n}\r\n\r\n#ToDoList {\r\n  display: flex;\r\n  flex-direction: column;\r\n  margin: 35vh;\r\n  width: 50%;\r\n  box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -webkit-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -moz-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n}\r\n\r\n#Demo {\r\n  color: #545862;\r\n  border: none;\r\n  width: 93%;\r\n  height: 3rem;\r\n  text-indent: 10px;\r\n}\r\n\r\n#Demo[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n#addItem {\r\n  border: none;\r\n  font-style: italic;\r\n  width: 93%;\r\n  height: 3rem;\r\n  text-indent: 10px;\r\n}\r\n\r\n#addItem[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n#addItem[type=\"text\"]::placeholder {\r\n  text-indent: 10px;\r\n}\r\n\r\n#todo-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 0;\r\n}\r\n\r\n.listItem {\r\n  display: flex;\r\n  align-items: center;\r\n  height: 3rem;\r\n}\r\n\r\n.inputList {\r\n  border: none;\r\n}\r\n\r\n.inputList[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n#clearButton {\r\n  width: 100%;\r\n  height: 3rem;\r\n  border: none;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  list-style: none;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.08);\r\n}\r\n\r\n#ToDoList {\r\n  display: flex;\r\n  flex-direction: column;\r\n  margin: 35vh;\r\n  width: 50%;\r\n  box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -webkit-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -moz-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n}\r\n\r\n#Demo {\r\n  color: #545862;\r\n  border: none;\r\n  width: 93%;\r\n  height: 3rem;\r\n  text-indent: 10px;\r\n}\r\n\r\n#Demo[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\ni {\r\n  cursor: pointer;\r\n}\r\n\r\n#addItem {\r\n  border: none;\r\n  font-style: italic;\r\n  width: 93%;\r\n  height: 3rem;\r\n  text-indent: 10px;\r\n}\r\n\r\n#addItem[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n#addItem[type=\"text\"]::placeholder {\r\n  text-indent: 10px;\r\n}\r\n\r\n#todo-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.listItem {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  height: 3rem;\r\n}\r\n\r\n.inputList {\r\n  border: none;\r\n}\r\n\r\n.inputList[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n.taskInput {\r\n  padding-right: 15rem;\r\n  width: 50%;\r\n  border: none;\r\n}\r\n\r\n.taskInput[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n.dotsDiv {\r\n  padding-right: 1.6rem;\r\n  border: none;\r\n}\r\n\r\n#clearButton {\r\n  width: 100%;\r\n  height: 3rem;\r\n  border: none;\r\n}\r\n\r\n#clearButton:hover {\r\n  text-decoration: underline;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17745,7 +17745,7 @@ __webpack_require__.r(__webpack_exports__);
 lodash__WEBPACK_IMPORTED_MODULE_0___default()();
 
 // Define the tasks array
-const tasks = [
+const tasks = JSON.parse(localStorage.getItem('tasks')) || [
   {
     description: 'Walk the dog',
     completed: false,
@@ -17768,13 +17768,14 @@ const tasks = [
   },
 ];
 
-// Define the populateTaskList function
-function populateTaskList() {
+function taskList() {
   const taskList = document.getElementById('todo-list');
+  taskList.innerHTML = '';
 
-  tasks.forEach((task) => {
+  tasks.forEach((task, index) => {
     const listItem = document.createElement('li');
     listItem.classList.add('listItem');
+    const taskInput = document.createElement('input');
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = task.completed;
@@ -17782,34 +17783,70 @@ function populateTaskList() {
       task.completed = checkbox.checked;
       if (task.completed) {
         listItem.classList.add('completed');
+        taskInput.style.textDecoration = 'line-through';
       } else {
         listItem.classList.remove('completed');
+        taskInput.style.textDecoration = 'none';
       }
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     });
     listItem.appendChild(checkbox);
 
-    const descriptionSpan = document.createElement('span');
-    descriptionSpan.innerText = task.description;
-    listItem.appendChild(descriptionSpan);
+    taskInput.classList.add('taskInput');
+    taskInput.type = 'text';
+    taskInput.value = task.description;
+    taskInput.addEventListener('input', () => {
+      task.description = taskInput.value;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    });
+    listItem.appendChild(taskInput);
 
     if (task.completed) {
       listItem.classList.add('completed');
     }
 
-    const taskInfoDiv = document.createElement('div'); // Create a new div element
-    taskInfoDiv.classList.add('task-info'); // Add a class to the div element
+    const dotsDiv = document.createElement('div');
+    dotsDiv.classList.add('dotsDiv');
 
-    const taskIndexSpan = document.createElement('span');
-    taskIndexSpan.innerHTML = '<i class="fa-light fa-ellipsis-vertical fa-lg" style="color: #343a40;"></i>'; // Display the task index on the right side
-    taskInfoDiv.appendChild(taskIndexSpan);
-
-    listItem.appendChild(taskInfoDiv); // Append the new div element to the list item
-
+    const dotsIcon = document.createElement('div');
+    dotsIcon.innerHTML = '<i id="Dots" class="bi bi-three-dots-vertical"></i>';
+    dotsDiv.appendChild(dotsIcon);
+    dotsDiv.addEventListener('click', removeItem);
+    listItem.appendChild(dotsDiv);
     taskList.appendChild(listItem);
   });
 }
 
-window.addEventListener('load', populateTaskList);
+function addTask() {
+  const input = document.getElementById('addItem');
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && input.value) {
+      const newTask = {
+        description: input.value,
+        completed: false,
+        index: tasks.length,
+      };
+      tasks.push(newTask);
+      taskList();
+      input.value = '';
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  });
+}
+
+function removeItem(event) {
+  const listItem = event.target.closest('.listItem');
+  const index = tasks.findIndex((task) => task.description === listItem.querySelector('.taskInput').value);
+  tasks.splice(index, 1);
+  listItem.remove();
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+window.addEventListener('load', () => {
+  taskList();
+  addTask();
+});
+
 })();
 
 /******/ })()

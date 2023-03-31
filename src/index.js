@@ -4,7 +4,7 @@ import './style.css';
 _();
 
 // Define the tasks array
-const tasks = [
+const tasks = JSON.parse(localStorage.getItem('tasks')) || [
   {
     description: 'Walk the dog',
     completed: false,
@@ -27,13 +27,14 @@ const tasks = [
   },
 ];
 
-// Define the populateTaskList function
-function populateTaskList() {
+function taskList() {
   const taskList = document.getElementById('todo-list');
+  taskList.innerHTML = '';
 
-  tasks.forEach((task) => {
+  tasks.forEach((task, index) => {
     const listItem = document.createElement('li');
     listItem.classList.add('listItem');
+    const taskInput = document.createElement('input');
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = task.completed;
@@ -41,34 +42,66 @@ function populateTaskList() {
       task.completed = checkbox.checked;
       if (task.completed) {
         listItem.classList.add('completed');
-        taskDiv.style.textDecoration = 'line-through';
+        taskInput.style.textDecoration = 'line-through';
       } else {
         listItem.classList.remove('completed');
-        taskDiv.style.textDecoration = 'none';
+        taskInput.style.textDecoration = 'none';
       }
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     });
     listItem.appendChild(checkbox);
 
-    const taskDiv = document.createElement('div');
-    taskDiv.classList.add('taskDiv');
-    taskDiv.innerText = task.description;
-    listItem.appendChild(taskDiv);
+    taskInput.classList.add('taskInput');
+    taskInput.type = 'text';
+    taskInput.value = task.description;
+    taskInput.addEventListener('input', () => {
+      task.description = taskInput.value;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    });
+    listItem.appendChild(taskInput);
 
     if (task.completed) {
       listItem.classList.add('completed');
     }
 
-    const dotsDiv = document.createElement('div'); // Create a new div element
-    dotsDiv.classList.add('dotsDiv'); // Add a class to the div element
+    const dotsDiv = document.createElement('div');
+    dotsDiv.classList.add('dotsDiv');
 
     const dotsIcon = document.createElement('div');
-    dotsIcon.innerHTML = '<i class="bi bi-three-dots-vertical"></i>'; // Display the task index on the right side
+    dotsIcon.innerHTML = '<i id="Dots" class="bi bi-three-dots-vertical"></i>';
     dotsDiv.appendChild(dotsIcon);
-
-    listItem.appendChild(dotsDiv); // Append the new div element to the list item
-
+    dotsDiv.addEventListener('click', removeItem);
+    listItem.appendChild(dotsDiv);
     taskList.appendChild(listItem);
   });
 }
 
-window.addEventListener('load', populateTaskList);
+function addTask() {
+  const input = document.getElementById('addItem');
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' && input.value) {
+      const newTask = {
+        description: input.value,
+        completed: false,
+        index: tasks.length,
+      };
+      tasks.push(newTask);
+      taskList();
+      input.value = '';
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  });
+}
+
+function removeItem(event) {
+  const listItem = event.target.closest('.listItem');
+  const index = tasks.findIndex((task) => task.description === listItem.querySelector('.taskInput').value);
+  tasks.splice(index, 1);
+  listItem.remove();
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+window.addEventListener('load', () => {
+  taskList();
+  addTask();
+});

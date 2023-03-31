@@ -4,7 +4,7 @@ import './style.css';
 _();
 
 // Define the tasks array
-const tasks = [
+const tasks = JSON.parse(localStorage.getItem('tasks')) || [
   {
     description: 'Walk the dog',
     completed: false,
@@ -27,13 +27,29 @@ const tasks = [
   },
 ];
 
+function saveTasksToLocalStorage() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function removeItem(listItem, index) {
+  tasks.splice(index, 1);
+  listItem.remove();
+
+  // update indexes of remaining tasks
+  for (let i = index; i < tasks.length; i += 1) {
+    tasks[i].index = i;
+  }
+  saveTasksToLocalStorage();
+}
+
 function taskList() {
-  const taskList = document.getElementById('todo-list');
-  taskList.innerHTML = '';
+  const taskListElement = document.getElementById('todo-list');
+  taskListElement.innerHTML = '';
 
   tasks.forEach((task, index) => {
     const listItem = document.createElement('li');
     listItem.classList.add('listItem');
+
     const taskDiv = document.createElement('div');
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
@@ -47,76 +63,61 @@ function taskList() {
         listItem.classList.remove('completed');
         taskDiv.style.textDecoration = 'none';
       }
-      localStorage.setItem('tasks', JSON.stringify(tasks));
+      saveTasksToLocalStorage();
     });
     listItem.appendChild(checkbox);
 
     taskDiv.classList.add('taskDiv');
     taskDiv.innerText = task.description;
-    taskDiv.addEventListener('dblclick', () => {
-      editDescription(taskDiv, task);
-    });
-    listItem.appendChild(taskDiv);
+    const editDescription = () => {
+      const inputTask = document.createElement('input');
+      inputTask.classList.add('taskDiv');
+      inputTask.value = task.description;
+      taskDiv.replaceWith(inputTask);
+      inputTask.focus();
+      inputTask.addEventListener('blur', () => {
+        task.description = inputTask.value;
+        inputTask.replaceWith(taskDiv);
+        taskDiv.innerText = task.description;
+        saveTasksToLocalStorage();
+      });
+    };
+    taskDiv.addEventListener('dblclick', editDescription);
 
-    if (task.completed) {
-      listItem.classList.add('completed');
-    }
+    listItem.appendChild(taskDiv);
 
     const dotsDiv = document.createElement('div');
     dotsDiv.classList.add('dotsDiv');
 
-    const dotsIcon = document.createElement('div');
+    let dotsIcon = document.createElement('div');
+    dotsIcon = document.createElement('div');
     dotsIcon.innerHTML = '<i id="Dots" class="bi bi-three-dots-vertical"></i>';
     dotsDiv.appendChild(dotsIcon);
-    dotsDiv.addEventListener('click', removeItem);
+    dotsDiv.addEventListener('click', () => removeItem(listItem, index));
     listItem.appendChild(dotsDiv);
-    taskList.appendChild(listItem);
+
+    taskListElement.appendChild(listItem);
   });
 }
 
 function addTask() {
   const input = document.getElementById('addItem');
-  input.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' && input.value) {
-      const newTask = {
-        description: input.value,
-        completed: false,
-        index: tasks.length,
-      };
-      tasks.push(newTask);
-      taskList();
-      input.value = '';
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
-  });
-}
 
-function removeItem(event) {
-  const listItem = event.target.closest('.listItem');
-  const index = tasks.findIndex((task) => task.description === listItem.querySelector('.taskDiv').innerText);
-  tasks.splice(index, 1);
-  listItem.remove();
-
-  // update indexes of remaining tasks
-  for (let i = index; i < tasks.length; i++) {
-    tasks[i].index = i;
+  function addNewTask() {
+    if (!input.value) return;
+    const newTask = { description: input.value, completed: false, index: tasks.length };
+    tasks.push(newTask);
+    taskList();
+    input.value = '';
+    saveTasksToLocalStorage();
   }
 
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-}
-
-function editDescription(taskDiv, task) {
-  const inputTask = document.createElement('input');
-  inputTask.classList.add('taskDiv');
-  inputTask.value = task.description;
-  taskDiv.replaceWith(inputTask);
-  inputTask.focus();
-  inputTask.addEventListener('blur', () => {
-    task.description = inputTask.value;
-    inputTask.replaceWith(taskDiv);
-    taskDiv.innerText = task.description;
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+  input.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      addNewTask();
+    }
   });
+  document.getElementById('Plus').addEventListener('click', addNewTask);
 }
 
 window.addEventListener('load', () => {

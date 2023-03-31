@@ -4,21 +4,6 @@ const tasks = JSON.parse(localStorage.getItem('tasks')) || [
     completed: false,
     index: 0,
   },
-  {
-    description: 'Buy groceries',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Clean the house',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Do laundry',
-    completed: false,
-    index: 3,
-  },
 ];
 
 function saveTasksToLocalStorage() {

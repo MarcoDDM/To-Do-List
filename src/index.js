@@ -4,7 +4,7 @@ import './style.css';
 _();
 
 // Define the tasks array
-const tasks = JSON.parse(localStorage.getItem('tasks')) || [
+const tasks = [
   {
     description: 'Walk the dog',
     completed: false,
@@ -96,14 +96,19 @@ function removeItem(event) {
   const index = tasks.findIndex((task) => task.description === listItem.querySelector('.taskDiv').innerText);
   tasks.splice(index, 1);
   listItem.remove();
+
+  // update indexes of remaining tasks
+  for (let i = index; i < tasks.length; i++) {
+    tasks[i].index = i;
+  }
+
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 function editDescription(taskDiv, task) {
   const inputTask = document.createElement('input');
-  inputTask.classList.add('taskDiv')
+  inputTask.classList.add('taskDiv');
   inputTask.value = task.description;
-  inputTask.classList.add('taskEdit');
   taskDiv.replaceWith(inputTask);
   inputTask.focus();
   inputTask.addEventListener('blur', () => {

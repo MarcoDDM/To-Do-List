@@ -1,7 +1,90 @@
-.hello {
-  color: red;
+* {
+  list-style: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-body {
-  background-color: bisque;
+#ToDoList {
+  display: flex;
+  flex-direction: column;
+  margin: 35vh;
+  width: 50%;
+  box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+#Demo {
+  color: #545862;
+  border: none;
+  width: 93%;
+  height: 3rem;
+  text-indent: 10px;
+}
+
+#Demo[type="text"]:focus {
+  outline: none;
+}
+
+i {
+  cursor: pointer;
+}
+
+#addItem {
+  border: none;
+  font-style: italic;
+  width: 93%;
+  height: 3rem;
+  text-indent: 10px;
+}
+
+#addItem[type="text"]:focus {
+  outline: none;
+}
+
+#addItem[type="text"]::placeholder {
+  text-indent: 10px;
+}
+
+#todo-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+}
+
+.inputList {
+  border: none;
+}
+
+.inputList[type="text"]:focus {
+  outline: none;
+}
+
+.taskDiv {
+  padding-right: 15rem;
+  width: 50%;
+  border: none;
+  outline: none;
+}
+
+.dotsDiv {
+  padding-right: 1.6rem;
+  border: none;
+}
+
+#clearButton {
+  width: 100%;
+  height: 3rem;
+  border: none;
+}
+
+#clearButton:hover {
+  text-decoration: underline;
 }

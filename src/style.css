@@ -67,13 +67,10 @@ i {
   outline: none;
 }
 
-.taskInput {
+.taskDiv {
   padding-right: 15rem;
   width: 50%;
   border: none;
-}
-
-.taskInput[type="text"]:focus {
   outline: none;
 }
 

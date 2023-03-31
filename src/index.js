@@ -34,7 +34,7 @@ function taskList() {
   tasks.forEach((task, index) => {
     const listItem = document.createElement('li');
     listItem.classList.add('listItem');
-    const taskInput = document.createElement('input');
+    const taskDiv = document.createElement('div');
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = task.completed;
@@ -42,23 +42,21 @@ function taskList() {
       task.completed = checkbox.checked;
       if (task.completed) {
         listItem.classList.add('completed');
-        taskInput.style.textDecoration = 'line-through';
+        taskDiv.style.textDecoration = 'line-through';
       } else {
         listItem.classList.remove('completed');
-        taskInput.style.textDecoration = 'none';
+        taskDiv.style.textDecoration = 'none';
       }
       localStorage.setItem('tasks', JSON.stringify(tasks));
     });
     listItem.appendChild(checkbox);
 
-    taskInput.classList.add('taskInput');
-    taskInput.type = 'text';
-    taskInput.value = task.description;
-    taskInput.addEventListener('input', () => {
-      task.description = taskInput.value;
-      localStorage.setItem('tasks', JSON.stringify(tasks));
+    taskDiv.classList.add('taskDiv');
+    taskDiv.innerText = task.description;
+    taskDiv.addEventListener('dblclick', () => {
+      editDescription(taskDiv, task);
     });
-    listItem.appendChild(taskInput);
+    listItem.appendChild(taskDiv);
 
     if (task.completed) {
       listItem.classList.add('completed');
@@ -95,10 +93,25 @@ function addTask() {
 
 function removeItem(event) {
   const listItem = event.target.closest('.listItem');
-  const index = tasks.findIndex((task) => task.description === listItem.querySelector('.taskInput').value);
+  const index = tasks.findIndex((task) => task.description === listItem.querySelector('.taskDiv').innerText);
   tasks.splice(index, 1);
   listItem.remove();
   localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function editDescription(taskDiv, task) {
+  const inputTask = document.createElement('input');
+  inputTask.classList.add('taskDiv')
+  inputTask.value = task.description;
+  inputTask.classList.add('taskEdit');
+  taskDiv.replaceWith(inputTask);
+  inputTask.focus();
+  inputTask.addEventListener('blur', () => {
+    task.description = inputTask.value;
+    inputTask.replaceWith(taskDiv);
+    taskDiv.innerText = task.description;
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  });
 }
 
 window.addEventListener('load', () => {

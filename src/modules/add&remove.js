@@ -51,8 +51,10 @@ export function taskList() {
       task.completed = checkbox.checked;
       if (task.completed) {
         listItem.classList.add('completed');
+        listItem.style.textDecoration = 'line-through';
       } else {
         listItem.classList.remove('completed');
+        listItem.style.textDecoration = 'none';
       }
       saveTasksToLocalStorage();
     });
@@ -84,7 +86,7 @@ export function taskList() {
 
     let dotsIcon = document.createElement('div');
     dotsIcon = document.createElement('div');
-    dotsIcon.innerHTML = '<i id="Dots" class="bi bi-three-dots-vertical"></i>';
+    dotsIcon.innerHTML = '<i class="bi bi-trash3"></i>';
     dotsDiv.appendChild(dotsIcon);
     dotsDiv.addEventListener('click', () => removeItem(listItem, index));
     listItem.appendChild(dotsDiv);

@@ -311,7 +311,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  list-style: none;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.08);\r\n}\r\n\r\n#ToDoList {\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 30%;\r\n  box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -webkit-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -moz-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n#Demo {\r\n  color: #000;\r\n  border: none;\r\n  width: 93%;\r\n  height: 3rem;\r\n  text-indent: 10px;\r\n}\r\n\r\n#Demo[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\ni {\r\n  cursor: pointer;\r\n}\r\n\r\n#addItem {\r\n  border: none;\r\n  font-style: italic;\r\n  width: 91%;\r\n  height: 3rem;\r\n  text-indent: 10px;\r\n}\r\n\r\n#addItem[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n#addItem[type=\"text\"]::placeholder {\r\n  text-indent: 10px;\r\n}\r\n\r\n#todo-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.listItem {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  height: 3rem;\r\n  gap: 15px;\r\n  transition: 300ms ease;\r\n}\r\n\r\n.listItem:hover {\r\n  background-color: lightblue;\r\n}\r\n\r\n.inputList {\r\n  border: none;\r\n}\r\n\r\n.inputList[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n.taskDiv {\r\n  padding-right: 15rem;\r\n  width: 50%;\r\n  border: none;\r\n  outline: none;\r\n}\r\n\r\n.taskDiv .checkbox:checked ~ .listItem {\r\n  text-decoration: line-through;\r\n}\r\n\r\n.dotsDiv {\r\n  padding-right: 1rem;\r\n  border: none;\r\n}\r\n\r\n#clearButton {\r\n  width: 100%;\r\n  height: 3rem;\r\n  border: none;\r\n  cursor: pointer;\r\n  background: lightgray;\r\n  color: #545862;\r\n}\r\n\r\n#clearButton:hover {\r\n  text-decoration: underline;\r\n  background-color: lightslategray;\r\n  color: #000;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  list-style: none;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.08);\r\n}\r\n\r\n#ToDoList {\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 45%;\r\n  box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -webkit-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -moz-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n#Demo {\r\n  color: #000;\r\n  border: none;\r\n  width: 93%;\r\n  height: 3rem;\r\n  text-indent: 10px;\r\n}\r\n\r\n#Demo[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\ni {\r\n  cursor: pointer;\r\n}\r\n\r\n#addItem {\r\n  border: none;\r\n  font-style: italic;\r\n  width: 91%;\r\n  height: 3rem;\r\n  text-indent: 10px;\r\n}\r\n\r\n#addItem[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n#addItem[type=\"text\"]::placeholder {\r\n  text-indent: 10px;\r\n}\r\n\r\n#todo-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.listItem {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  height: 3rem;\r\n  gap: 15px;\r\n  transition: 300ms ease;\r\n}\r\n\r\n.listItem:hover {\r\n  background-color: lightblue;\r\n}\r\n\r\n.inputList {\r\n  border: none;\r\n}\r\n\r\n.inputList[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n.taskDiv {\r\n  padding-right: 15rem;\r\n  width: 50%;\r\n  border: none;\r\n  outline: none;\r\n}\r\n\r\n.taskDiv .checkbox:checked ~ .listItem {\r\n  text-decoration: line-through;\r\n}\r\n\r\n.dotsDiv {\r\n  padding-right: 1rem;\r\n  border: none;\r\n}\r\n\r\n#clearButton {\r\n  width: 100%;\r\n  height: 3rem;\r\n  border: none;\r\n  cursor: pointer;\r\n  background: lightgray;\r\n  color: #545862;\r\n}\r\n\r\n#clearButton:hover {\r\n  text-decoration: underline;\r\n  background-color: lightslategray;\r\n  color: #000;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -422,12 +422,14 @@ module.exports = function (cssWithMappingToString) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Checkbox": () => (/* binding */ Checkbox),
 /* harmony export */   "addTask": () => (/* binding */ addTask),
 /* harmony export */   "clearCompleted": () => (/* binding */ clearCompleted),
 /* harmony export */   "removeItem": () => (/* binding */ removeItem),
+/* harmony export */   "saveTask": () => (/* binding */ saveTask),
 /* harmony export */   "taskList": () => (/* binding */ taskList)
 /* harmony export */ });
-const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 function saveTask() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -438,10 +440,22 @@ function removeItem(listItem, index) {
   listItem.remove();
 
   // update indexes of remaining tasks
-  for (let i = index; i < tasks.length; i += 1) {
-    tasks[i].index = i;
+  for (let i = 0; i < tasks.length; i += 1) {
+    tasks[i].index = i + 1;
   }
   saveTask();
+}
+
+function Checkbox(task, listItem) {
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.classList.add('checkbox');
+  checkbox.checked = task.completed;
+  checkbox.addEventListener('change', () => {
+    task.completed = checkbox.checked;
+    saveTask();
+  });
+  listItem.appendChild(checkbox);
 }
 
 function taskList() {
@@ -452,20 +466,7 @@ function taskList() {
     const listItem = document.createElement('li');
     listItem.classList.add('listItem');
 
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.classList.add('checkbox');
-    checkbox.checked = task.completed;
-    checkbox.addEventListener('change', () => {
-      task.completed = checkbox.checked;
-      if (task.completed) {
-        listItem.classList.add('completed');
-      } else {
-        listItem.classList.remove('completed');
-      }
-      saveTask();
-    });
-    listItem.appendChild(checkbox);
+    Checkbox(task, listItem);
 
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('taskDiv');
@@ -485,24 +486,22 @@ function taskList() {
       });
     };
     taskDiv.addEventListener('dblclick', editDescription);
-
     listItem.appendChild(taskDiv);
 
     const dotsDiv = document.createElement('div');
     dotsDiv.classList.add('dotsDiv');
 
-    let dotsIcon = document.createElement('div');
-    dotsIcon = document.createElement('div');
+    const dotsIcon = document.createElement('div');
     dotsIcon.innerHTML = '<i class="bi bi-three-dots-vertical"></i>';
     dotsDiv.appendChild(dotsIcon);
-    dotsDiv.addEventListener('click', () => removeItem(listItem, index));
+    dotsIcon.addEventListener('click', () => removeItem(listItem, index));
     listItem.appendChild(dotsDiv);
     taskListElement.appendChild(listItem);
 
-    listItem.addEventListener('mouseover', () => {
-      dotsIcon.innerHTML = '<i class="bi bi-trash3-fill"></i>';
+    listItem.addEventListener('mouseenter', () => {
+      dotsIcon.innerHTML = '<i class="bi bi-trash3"></i>';
     });
-    listItem.addEventListener('mouseout', () => {
+    listItem.addEventListener('mouseleave', () => {
       dotsIcon.innerHTML = '<i class="bi bi-three-dots-vertical"></i>';
     });
   });
@@ -513,7 +512,7 @@ function addTask() {
 
   function addNewTask() {
     if (!input.value) return;
-    const newTask = { description: input.value, completed: false, index: tasks.length };
+    const newTask = { description: input.value, completed: false, index: tasks.length + 1 };
     tasks.push(newTask);
     taskList();
     input.value = '';
@@ -546,7 +545,6 @@ if (demoInputValue) {
 demoInput.addEventListener('change', () => {
   localStorage.setItem('demoInputValue', demoInput.value);
 });
-
 
 /***/ })
 /******/ 	]);
@@ -627,16 +625,17 @@ var __webpack_exports__ = {};
 (() => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _modules_add_remove_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
+/* harmony import */ var _modules_ToDoList_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
 
 
 
 window.addEventListener('load', () => {
-  (0,_modules_add_remove_js__WEBPACK_IMPORTED_MODULE_1__.taskList)();
-  (0,_modules_add_remove_js__WEBPACK_IMPORTED_MODULE_1__.addTask)();
+  (0,_modules_ToDoList_js__WEBPACK_IMPORTED_MODULE_1__.taskList)();
+  (0,_modules_ToDoList_js__WEBPACK_IMPORTED_MODULE_1__.addTask)();
+  (0,_modules_ToDoList_js__WEBPACK_IMPORTED_MODULE_1__.taskList)(_modules_ToDoList_js__WEBPACK_IMPORTED_MODULE_1__.Checkbox);
+  (0,_modules_ToDoList_js__WEBPACK_IMPORTED_MODULE_1__.clearCompleted)();
 });
-
-(0,_modules_add_remove_js__WEBPACK_IMPORTED_MODULE_1__.clearCompleted)();
+(0,_modules_ToDoList_js__WEBPACK_IMPORTED_MODULE_1__.taskList)(_modules_ToDoList_js__WEBPACK_IMPORTED_MODULE_1__.removeItem);
 })();
 
 /******/ })()

@@ -6,11 +6,14 @@
 #ToDoList {
   display: flex;
   flex-direction: column;
-  margin: 35vh;
-  width: 50%;
+  width: 30%;
   box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #Demo {
@@ -32,7 +35,7 @@ i {
 #addItem {
   border: none;
   font-style: italic;
-  width: 93%;
+  width: 91%;
   height: 3rem;
   text-indent: 10px;
 }
@@ -57,6 +60,12 @@ i {
   justify-content: space-between;
   align-items: center;
   height: 3rem;
+  gap: 15px;
+  transition: 300ms ease;
+}
+
+.listItem:hover {
+  background-color: lightblue;
 }
 
 .inputList {
@@ -67,6 +76,10 @@ i {
   outline: none;
 }
 
+.checkbox:checked ~ .taskDiv {
+  text-decoration: line-through;
+}
+
 .taskDiv {
   padding-right: 15rem;
   width: 50%;
@@ -74,8 +87,12 @@ i {
   outline: none;
 }
 
+.checkbox:checked ~ .listItem {
+  text-decoration: line-through;
+}
+
 .dotsDiv {
-  padding-right: 1.6rem;
+  padding-right: 1rem;
   border: none;
 }
 
@@ -84,10 +101,12 @@ i {
   height: 3rem;
   border: none;
   cursor: pointer;
+  background: lightgray;
   color: #545862;
 }
 
 #clearButton:hover {
   text-decoration: underline;
+  background-color: lightslategray;
   color: #000;
 }

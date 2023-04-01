@@ -25,15 +25,14 @@ export function taskList() {
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
+    checkbox.classList.add('checkbox');
     checkbox.checked = task.completed;
     checkbox.addEventListener('change', () => {
       task.completed = checkbox.checked;
       if (task.completed) {
         listItem.classList.add('completed');
-        listItem.style.textDecoration = 'line-through';
       } else {
         listItem.classList.remove('completed');
-        listItem.style.textDecoration = 'none';
       }
       saveTask();
     });
@@ -65,12 +64,18 @@ export function taskList() {
 
     let dotsIcon = document.createElement('div');
     dotsIcon = document.createElement('div');
-    dotsIcon.innerHTML = '<i class="bi bi-trash3"></i>';
+    dotsIcon.innerHTML = '<i class="bi bi-three-dots-vertical"></i>';
     dotsDiv.appendChild(dotsIcon);
     dotsDiv.addEventListener('click', () => removeItem(listItem, index));
     listItem.appendChild(dotsDiv);
-
     taskListElement.appendChild(listItem);
+
+    listItem.addEventListener('mouseover', () => {
+      dotsIcon.innerHTML = '<i class="bi bi-trash3-fill"></i>';
+    });
+    listItem.addEventListener('mouseout', () => {
+      dotsIcon.innerHTML = '<i class="bi bi-three-dots-vertical"></i>';
+    });
   });
 }
 

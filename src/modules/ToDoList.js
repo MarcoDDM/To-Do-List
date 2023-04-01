@@ -9,8 +9,8 @@ export function removeItem(listItem, index) {
   listItem.remove();
 
   // update indexes of remaining tasks
-  for (let i = index; i < tasks.length; i += 1) {
-    tasks[i].index = i;
+  for (let i = 0; i < tasks.length; i += 1) {
+    tasks[i].index = i + 1;
   }
   saveTask();
 }

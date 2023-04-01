@@ -1,4 +1,4 @@
-const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 function saveTask() {
   localStorage.setItem('tasks', JSON.stringify(tasks));

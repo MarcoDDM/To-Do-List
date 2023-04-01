@@ -7,7 +7,6 @@ window.addEventListener('load', () => {
   taskList();
   addTask();
   taskList(Checkbox);
+  clearCompleted();
 });
-
-clearCompleted();
 taskList(removeItem);

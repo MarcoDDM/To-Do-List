@@ -1,6 +1,6 @@
 const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-function saveTasksToLocalStorage() {
+function saveTask() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -12,7 +12,7 @@ export function removeItem(listItem, index) {
   for (let i = index; i < tasks.length; i += 1) {
     tasks[i].index = i;
   }
-  saveTasksToLocalStorage();
+  saveTask();
 }
 
 export function taskList() {
@@ -35,7 +35,7 @@ export function taskList() {
         listItem.classList.remove('completed');
         listItem.style.textDecoration = 'none';
       }
-      saveTasksToLocalStorage();
+      saveTask();
     });
     listItem.appendChild(checkbox);
 
@@ -53,7 +53,7 @@ export function taskList() {
         task.description = inputTask.value;
         inputTask.replaceWith(taskDiv);
         taskDiv.innerText = task.description;
-        saveTasksToLocalStorage();
+        saveTask();
       });
     };
     taskDiv.addEventListener('dblclick', editDescription);
@@ -83,7 +83,7 @@ export function addTask() {
     tasks.push(newTask);
     taskList();
     input.value = '';
-    saveTasksToLocalStorage();
+    saveTask();
   }
 
   input.addEventListener('keydown', (event) => {

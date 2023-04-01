@@ -17,7 +17,7 @@
 }
 
 #Demo {
-  color: #000000;
+  color: #000;
   border: none;
   width: 93%;
   height: 3rem;
@@ -76,10 +76,6 @@ i {
   outline: none;
 }
 
-.checkbox:checked ~ .taskDiv {
-  text-decoration: line-through;
-}
-
 .taskDiv {
   padding-right: 15rem;
   width: 50%;
@@ -87,7 +83,7 @@ i {
   outline: none;
 }
 
-.checkbox:checked ~ .listItem {
+.taskDiv .checkbox:checked ~ .listItem {
   text-decoration: line-through;
 }
 

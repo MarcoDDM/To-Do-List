@@ -311,7 +311,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  list-style: none;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.08);\r\n}\r\n\r\n#ToDoList {\r\n  display: flex;\r\n  flex-direction: column;\r\n  margin: 35vh;\r\n  width: 50%;\r\n  box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -webkit-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -moz-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n}\r\n\r\n#Demo {\r\n  color: #545862;\r\n  border: none;\r\n  width: 93%;\r\n  height: 3rem;\r\n  text-indent: 10px;\r\n}\r\n\r\n#Demo[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\ni {\r\n  cursor: pointer;\r\n}\r\n\r\n#addItem {\r\n  border: none;\r\n  font-style: italic;\r\n  width: 93%;\r\n  height: 3rem;\r\n  text-indent: 10px;\r\n}\r\n\r\n#addItem[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n#addItem[type=\"text\"]::placeholder {\r\n  text-indent: 10px;\r\n}\r\n\r\n#todo-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.listItem {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  height: 3rem;\r\n}\r\n\r\n.inputList {\r\n  border: none;\r\n}\r\n\r\n.inputList[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n.taskDiv {\r\n  padding-right: 15rem;\r\n  width: 50%;\r\n  border: none;\r\n  outline: none;\r\n}\r\n\r\n.dotsDiv {\r\n  padding-right: 1.6rem;\r\n  border: none;\r\n}\r\n\r\n#clearButton {\r\n  width: 100%;\r\n  height: 3rem;\r\n  border: none;\r\n}\r\n\r\n#clearButton:hover {\r\n  text-decoration: underline;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  list-style: none;\r\n  border-bottom: 1px solid rgba(0, 0, 0, 0.08);\r\n}\r\n\r\n#ToDoList {\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 30%;\r\n  box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -webkit-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  -moz-box-shadow: 0 2px 3px 3px rgba(0, 0, 0, 0.5);\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n#Demo {\r\n  color: #000;\r\n  border: none;\r\n  width: 93%;\r\n  height: 3rem;\r\n  text-indent: 10px;\r\n}\r\n\r\n#Demo[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\ni {\r\n  cursor: pointer;\r\n}\r\n\r\n#addItem {\r\n  border: none;\r\n  font-style: italic;\r\n  width: 91%;\r\n  height: 3rem;\r\n  text-indent: 10px;\r\n}\r\n\r\n#addItem[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n#addItem[type=\"text\"]::placeholder {\r\n  text-indent: 10px;\r\n}\r\n\r\n#todo-list {\r\n  display: flex;\r\n  flex-direction: column;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\n\r\n.listItem {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  height: 3rem;\r\n  gap: 15px;\r\n  transition: 300ms ease;\r\n}\r\n\r\n.listItem:hover {\r\n  background-color: lightblue;\r\n}\r\n\r\n.inputList {\r\n  border: none;\r\n}\r\n\r\n.inputList[type=\"text\"]:focus {\r\n  outline: none;\r\n}\r\n\r\n.taskDiv {\r\n  padding-right: 15rem;\r\n  width: 50%;\r\n  border: none;\r\n  outline: none;\r\n}\r\n\r\n.taskDiv .checkbox:checked ~ .listItem {\r\n  text-decoration: line-through;\r\n}\r\n\r\n.dotsDiv {\r\n  padding-right: 1rem;\r\n  border: none;\r\n}\r\n\r\n#clearButton {\r\n  width: 100%;\r\n  height: 3rem;\r\n  border: none;\r\n  cursor: pointer;\r\n  background: lightgray;\r\n  color: #545862;\r\n}\r\n\r\n#clearButton:hover {\r\n  text-decoration: underline;\r\n  background-color: lightslategray;\r\n  color: #000;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -423,33 +423,13 @@ module.exports = function (cssWithMappingToString) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "addTask": () => (/* binding */ addTask),
+/* harmony export */   "clearCompleted": () => (/* binding */ clearCompleted),
 /* harmony export */   "removeItem": () => (/* binding */ removeItem),
 /* harmony export */   "taskList": () => (/* binding */ taskList)
 /* harmony export */ });
-const tasks = JSON.parse(localStorage.getItem('tasks')) || [
-  {
-    description: 'Walk the dog',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Buy groceries',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Clean the house',
-    completed: false,
-    index: 2,
-  },
-  {
-    description: 'Do laundry',
-    completed: false,
-    index: 3,
-  },
-];
+const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-function saveTasksToLocalStorage() {
+function saveTask() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -461,7 +441,7 @@ function removeItem(listItem, index) {
   for (let i = index; i < tasks.length; i += 1) {
     tasks[i].index = i;
   }
-  saveTasksToLocalStorage();
+  saveTask();
 }
 
 function taskList() {
@@ -474,17 +454,16 @@ function taskList() {
 
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
+    checkbox.classList.add('checkbox');
     checkbox.checked = task.completed;
     checkbox.addEventListener('change', () => {
       task.completed = checkbox.checked;
       if (task.completed) {
         listItem.classList.add('completed');
-        listItem.style.textDecoration = 'line-through';
       } else {
         listItem.classList.remove('completed');
-        listItem.style.textDecoration = 'none';
       }
-      saveTasksToLocalStorage();
+      saveTask();
     });
     listItem.appendChild(checkbox);
 
@@ -502,7 +481,7 @@ function taskList() {
         task.description = inputTask.value;
         inputTask.replaceWith(taskDiv);
         taskDiv.innerText = task.description;
-        saveTasksToLocalStorage();
+        saveTask();
       });
     };
     taskDiv.addEventListener('dblclick', editDescription);
@@ -514,12 +493,18 @@ function taskList() {
 
     let dotsIcon = document.createElement('div');
     dotsIcon = document.createElement('div');
-    dotsIcon.innerHTML = '<i class="bi bi-trash3"></i>';
+    dotsIcon.innerHTML = '<i class="bi bi-three-dots-vertical"></i>';
     dotsDiv.appendChild(dotsIcon);
     dotsDiv.addEventListener('click', () => removeItem(listItem, index));
     listItem.appendChild(dotsDiv);
-
     taskListElement.appendChild(listItem);
+
+    listItem.addEventListener('mouseover', () => {
+      dotsIcon.innerHTML = '<i class="bi bi-trash3-fill"></i>';
+    });
+    listItem.addEventListener('mouseout', () => {
+      dotsIcon.innerHTML = '<i class="bi bi-three-dots-vertical"></i>';
+    });
   });
 }
 
@@ -532,7 +517,7 @@ function addTask() {
     tasks.push(newTask);
     taskList();
     input.value = '';
-    saveTasksToLocalStorage();
+    saveTask();
   }
 
   input.addEventListener('keydown', (event) => {
@@ -542,6 +527,26 @@ function addTask() {
   });
   document.getElementById('Plus').addEventListener('click', addNewTask);
 }
+
+function clearCompleted() {
+  const clearButton = document.getElementById('clearButton');
+  clearButton.addEventListener('click', () => {
+    tasks = tasks.filter((task) => !task.completed);
+    taskList();
+    saveTask();
+  });
+}
+
+const demoInput = document.getElementById('Demo');
+
+const demoInputValue = localStorage.getItem('demoInputValue');
+if (demoInputValue) {
+  demoInput.value = demoInputValue;
+}
+demoInput.addEventListener('change', () => {
+  localStorage.setItem('demoInputValue', demoInput.value);
+});
+
 
 /***/ })
 /******/ 	]);
@@ -629,9 +634,9 @@ __webpack_require__.r(__webpack_exports__);
 window.addEventListener('load', () => {
   (0,_modules_add_remove_js__WEBPACK_IMPORTED_MODULE_1__.taskList)();
   (0,_modules_add_remove_js__WEBPACK_IMPORTED_MODULE_1__.addTask)();
-  (0,_modules_add_remove_js__WEBPACK_IMPORTED_MODULE_1__.removeItem)();
 });
 
+(0,_modules_add_remove_js__WEBPACK_IMPORTED_MODULE_1__.clearCompleted)();
 })();
 
 /******/ })()

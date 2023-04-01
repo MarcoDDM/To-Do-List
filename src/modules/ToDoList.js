@@ -1,6 +1,6 @@
-const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-function saveTask() {
+export function saveTask() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
@@ -9,10 +9,22 @@ export function removeItem(listItem, index) {
   listItem.remove();
 
   // update indexes of remaining tasks
-  for (let i = index; i < tasks.length; i += 1) {
-    tasks[i].index = i;
+  for (let i = 0; i < tasks.length; i += 1) {
+    tasks[i].index = i + 1;
   }
   saveTask();
+}
+
+export function Checkbox(task, listItem) {
+  const checkbox = document.createElement('input');
+  checkbox.type = 'checkbox';
+  checkbox.classList.add('checkbox');
+  checkbox.checked = task.completed;
+  checkbox.addEventListener('change', () => {
+    task.completed = checkbox.checked;
+    saveTask();
+  });
+  listItem.appendChild(checkbox);
 }
 
 export function taskList() {
@@ -23,21 +35,7 @@ export function taskList() {
     const listItem = document.createElement('li');
     listItem.classList.add('listItem');
 
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.checked = task.completed;
-    checkbox.addEventListener('change', () => {
-      task.completed = checkbox.checked;
-      if (task.completed) {
-        listItem.classList.add('completed');
-        listItem.style.textDecoration = 'line-through';
-      } else {
-        listItem.classList.remove('completed');
-        listItem.style.textDecoration = 'none';
-      }
-      saveTask();
-    });
-    listItem.appendChild(checkbox);
+    Checkbox(task, listItem);
 
     const taskDiv = document.createElement('div');
     taskDiv.classList.add('taskDiv');
@@ -57,20 +55,24 @@ export function taskList() {
       });
     };
     taskDiv.addEventListener('dblclick', editDescription);
-
     listItem.appendChild(taskDiv);
 
     const dotsDiv = document.createElement('div');
     dotsDiv.classList.add('dotsDiv');
 
-    let dotsIcon = document.createElement('div');
-    dotsIcon = document.createElement('div');
-    dotsIcon.innerHTML = '<i class="bi bi-trash3"></i>';
+    const dotsIcon = document.createElement('div');
+    dotsIcon.innerHTML = '<i class="bi bi-three-dots-vertical"></i>';
     dotsDiv.appendChild(dotsIcon);
-    dotsDiv.addEventListener('click', () => removeItem(listItem, index));
+    dotsIcon.addEventListener('click', () => removeItem(listItem, index));
     listItem.appendChild(dotsDiv);
-
     taskListElement.appendChild(listItem);
+
+    listItem.addEventListener('mouseenter', () => {
+      dotsIcon.innerHTML = '<i class="bi bi-trash3"></i>';
+    });
+    listItem.addEventListener('mouseleave', () => {
+      dotsIcon.innerHTML = '<i class="bi bi-three-dots-vertical"></i>';
+    });
   });
 }
 
@@ -79,7 +81,7 @@ export function addTask() {
 
   function addNewTask() {
     if (!input.value) return;
-    const newTask = { description: input.value, completed: false, index: tasks.length };
+    const newTask = { description: input.value, completed: false, index: tasks.length + 1 };
     tasks.push(newTask);
     taskList();
     input.value = '';
@@ -93,3 +95,22 @@ export function addTask() {
   });
   document.getElementById('Plus').addEventListener('click', addNewTask);
 }
+
+export function clearCompleted() {
+  const clearButton = document.getElementById('clearButton');
+  clearButton.addEventListener('click', () => {
+    tasks = tasks.filter((task) => !task.completed);
+    taskList();
+    saveTask();
+  });
+}
+
+const demoInput = document.getElementById('Demo');
+
+const demoInputValue = localStorage.getItem('demoInputValue');
+if (demoInputValue) {
+  demoInput.value = demoInputValue;
+}
+demoInput.addEventListener('change', () => {
+  localStorage.setItem('demoInputValue', demoInput.value);
+});

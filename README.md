@@ -63,7 +63,7 @@
 ## 🚀 Live Demo <a name="live-demo"></a>
 
 
-- See a live Web Site in <a href="https://danfall369.github.io/To-Do-List/dist/" target="_blank">HERE!</a>
+- See a live Web Site in <a href="https://to-do-list-by-danfall.netlify.app/" target="_blank">HERE!</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -35,7 +35,7 @@ i {
 #addItem {
   border: none;
   font-style: italic;
-  width: 91%;
+  width: 94%;
   height: 3rem;
   text-indent: 10px;
 }
@@ -77,7 +77,7 @@ i {
 }
 
 .taskDiv {
-  padding-right: 15rem;
+  padding-right: 45%;
   width: 50%;
   border: none;
   outline: none;
@@ -88,7 +88,7 @@ i {
 }
 
 .dotsDiv {
-  padding-right: 1rem;
+  padding-right: 3%;
   border: none;
 }
 

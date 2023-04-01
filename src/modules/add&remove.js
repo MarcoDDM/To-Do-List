@@ -93,3 +93,12 @@ export function addTask() {
   });
   document.getElementById('Plus').addEventListener('click', addNewTask);
 }
+
+export function clearCompleted() {
+  const clearButton = document.getElementById('clearButton');
+  clearButton.addEventListener('click', () => {
+    tasks = tasks.filter((task) => !task.completed);
+    taskList();
+    saveTask();
+  });
+}

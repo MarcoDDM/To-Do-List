@@ -1,7 +1,8 @@
 import { JSDOM } from 'jsdom';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'jest-localstorage-mock';
 import {
-  addTask, saveTask, taskList, removeItem, Checkbox, addNewTask, clearCompleted,
+  addTask, saveTask, removeItem,
 } from './ToDoList.js';
 
 describe('list test', () => {
@@ -38,7 +39,7 @@ describe('list test', () => {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const input = document.querySelector('#addItem');
     input.value = 'test example 1';
-    input.dispatchEvent(new global.KeyboardEvent('keydown', { keyCode: 13 }));
+    addTask(input);
     const newTask = {
       description: input.value, completed: false, index: tasks.length + 1,
     };
@@ -48,23 +49,15 @@ describe('list test', () => {
     expect(tasks.length).toBeGreaterThan(0);
   });
 
-  // Add more tests here
   test('Remove Item', () => {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const input = document.querySelector('#addItem');
-    const listItem = document.createElement('li');
-    const newTask = {
-      description: input.value, completed: false, index: tasks.length + 1,
-    };
-    const { index } = newTask;
-
-    tasks.splice(index, 1);
-    listItem.remove();
-
-    for (let i = 0; i < tasks.length; i += 1) {
-      tasks[i].index = i + 1;
-    }
-    saveTask();
+    input.value = 'test example 1';
+    addTask(input);
+    const listItem = document.querySelector('li');
+    removeItem(listItem);
+    tasks.pop();
+    saveTask(tasks);
 
     expect(tasks.length).toBe(0);
   });

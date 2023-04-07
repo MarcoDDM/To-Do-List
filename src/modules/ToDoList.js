@@ -89,7 +89,7 @@ export function addNewTask() {
 export function addTask() {
   const input = document.getElementById('addItem');
 
-  addNewTask()
+  addNewTask();
 
   input.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {

@@ -76,17 +76,20 @@ export function taskList() {
   });
 }
 
+export function addNewTask() {
+  const input = document.getElementById('addItem');
+  if (!input.value) return;
+  const newTask = { description: input.value, completed: false, index: tasks.length + 1 };
+  tasks.push(newTask);
+  taskList();
+  input.value = '';
+  saveTask();
+}
+
 export function addTask() {
   const input = document.getElementById('addItem');
 
-  function addNewTask() {
-    if (!input.value) return;
-    const newTask = { description: input.value, completed: false, index: tasks.length + 1 };
-    tasks.push(newTask);
-    taskList();
-    input.value = '';
-    saveTask();
-  }
+  addNewTask()
 
   input.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
@@ -104,13 +107,3 @@ export function clearCompleted() {
     saveTask();
   });
 }
-
-const demoInput = document.getElementById('Demo');
-
-const demoInputValue = localStorage.getItem('demoInputValue');
-if (demoInputValue) {
-  demoInput.value = demoInputValue;
-}
-demoInput.addEventListener('change', () => {
-  localStorage.setItem('demoInputValue', demoInput.value);
-});
